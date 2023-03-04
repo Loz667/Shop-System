@@ -7,5 +7,5 @@ public class ItemData : ScriptableObject
     [SerializeField] float itemPrice;
 
     public string Name { get { return itemName; } }
-    public float ItemPrice { get { return itemPrice; } }
+    public float Price { get { return itemPrice; } }
 }

@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class ObjectInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] ItemData itemData;
+    public ItemData itemData;
+
+    PlayerCoinCount playerCoins;
+
+    private void Awake()
+    {
+        playerCoins = GameObject.FindWithTag("Player").GetComponent<PlayerCoinCount>();
+    }
 
     public string GetInteractText()
     {
@@ -21,6 +28,8 @@ public class ObjectInteractable : MonoBehaviour, IInteractable
 
     void BuyItem()
     {
+        playerCoins.currentCoinCount -= itemData.Price;
+        playerCoins.UpdateCoinDisplay();
         Destroy(gameObject);
         Debug.Log("Item Purchased");
     }
